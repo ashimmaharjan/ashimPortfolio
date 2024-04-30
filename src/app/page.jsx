@@ -8,31 +8,45 @@ import ConatctIcon from "../../public/images/at-dynamic-color.png";
 import HobbiesIcon from "../../public/images/paint-kit-dynamic-color.png";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-const navItems = [
-  {
-    name: "Home",
-    iconPath: ComputerIcon,
-  },
-  {
-    name: "Resume",
-    iconPath: FileIcon,
-  },
-  {
-    name: "Projects",
-    iconPath: FolderIcon,
-  },
-  {
-    name: "Hobbies",
-    iconPath: HobbiesIcon,
-  },
-  {
-    name: "Contact",
-    iconPath: ConatctIcon,
-  },
-];
+import Modal from "./components/Modal";
+import { useState } from "react";
 
 const Index = () => {
+  const navItems = [
+    {
+      name: "Home",
+      iconPath: ComputerIcon,
+    },
+    {
+      name: "Resume",
+      iconPath: FileIcon,
+    },
+    {
+      name: "Projects",
+      iconPath: FolderIcon,
+    },
+    {
+      name: "Hobbies",
+      iconPath: HobbiesIcon,
+    },
+    {
+      name: "Contact",
+      iconPath: ConatctIcon,
+    },
+  ];
+
+  const [modal, setModal] = useState(false);
+  const [selectedNavItem, setSelectedNavItem] = useState(null);
+
+  const triggerModal = (index) => {
+    setSelectedNavItem(index);
+    setModal(true);
+  };
+
+  const closeModal = () => {
+    setModal(false);
+  };
+
   return (
     <section className="bg-[#0A0921]">
       <div className="main-body h-[90vh]">
@@ -63,6 +77,7 @@ const Index = () => {
                 transition: { type: "spring", stiffness: 400, duration: 200 },
               }}
               className="navItem cursor-pointer"
+              onClick={() => triggerModal(index)}
             >
               <Image
                 src={navItem.iconPath}
@@ -71,7 +86,6 @@ const Index = () => {
                 height={80}
                 quality={100}
                 placeholder="blur"
-                objectFit="contain"
               />
               <p className="text-center text-xl">{navItem.name}</p>
             </motion.div>
@@ -79,6 +93,8 @@ const Index = () => {
         </div>
         <div className="taskbar-base h-full"></div>
       </div>
+
+      {modal && <Modal closeModal={closeModal} />}
     </section>
   );
 };

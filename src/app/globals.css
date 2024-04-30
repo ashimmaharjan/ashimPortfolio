@@ -21,7 +21,7 @@ body {
 }
 
 .taskbar {
-  @apply absolute -top-9 left-0 w-full h-full z-20 text-gray-400 px-16 flex justify-center items-center gap-10;
+  @apply absolute -top-9 left-0 w-full h-full z-[1000] text-gray-400 px-16 flex justify-center items-center gap-10;
 }
 
 .taskbar-base {
