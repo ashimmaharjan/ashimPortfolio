@@ -61,7 +61,7 @@ const Modal = ({ title, closeModal }) => {
           },
         }}
         className={`bg-[#ECECEC] border-2 border-gray-200 ${
-          windowSize === "minimized" ? "w-[400px] h-96" : "w-[70%] h-[70%]"
+          windowSize === "minimized" ? "w-[400px] h-96" : "w-[75%] h-[75%]"
         }`}
       >
         {/* Control Bar */}
@@ -75,7 +75,7 @@ const Modal = ({ title, closeModal }) => {
                 className={`w-4 h-4 group p-2 rounded-full shadow flex justify-center items-center ${button.bgColor}`}
                 onClick={button.action}
               >
-                <span className="text-gray-900 text-xs hidden group-hover:block">
+                <span className="text-gray-900 text-xs hidden transition-all ease-in-out duration-300 group-hover:block">
                   {button.icon}
                 </span>
               </button>

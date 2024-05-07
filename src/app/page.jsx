@@ -6,6 +6,7 @@ import FileIcon from "../../public/images/file-text-dynamic-color.png";
 import FolderIcon from "../../public/images/fav-folder-dynamic-color.png";
 import ConatctIcon from "../../public/images/at-dynamic-color.png";
 import HobbiesIcon from "../../public/images/paint-kit-dynamic-color.png";
+import SkillsIcon from "../../public/images/magic-trick-dynamic-premium.png";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Modal from "./components/Modal";
@@ -24,6 +25,10 @@ const Index = () => {
     {
       name: "Projects",
       iconPath: FolderIcon,
+    },
+    {
+      name: "Skills",
+      iconPath: SkillsIcon,
     },
     {
       name: "Hobbies",
@@ -52,7 +57,7 @@ const Index = () => {
       <div className="main-body h-[90vh]">
         <Spline
           className="w-10 h-10"
-          scene="https://prod.spline.design/NElKZkKFiSvZtA3f/scene.splinecode"
+          scene="https://prod.spline.design/AGb0M6lqU2o7jHeK/scene.splinecode"
         />
       </div>
 
