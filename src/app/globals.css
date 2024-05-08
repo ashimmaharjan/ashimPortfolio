@@ -21,16 +21,16 @@ body {
 }
 
 .taskbar {
-  @apply absolute -top-9 left-0 w-full h-full z-[1000] text-gray-400 px-16 flex justify-center items-center gap-10;
+  @apply absolute -top-9 left-0 w-full h-full z-[1000] text-gray-300 px-16 flex justify-center items-center gap-10;
 }
 
 .taskbar-base {
   transform-style: preserve-3d;
   transform: rotateX(45deg);
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(19, 5, 5, 0.35);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(5.5px);
-  -webkit-backdrop-filter: blur(5.5px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }

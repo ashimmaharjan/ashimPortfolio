@@ -53,11 +53,11 @@ const Index = () => {
   };
 
   return (
-    <section className="bg-[#0A0921]">
+    <section className="bg-[#E0E0E3]">
       <div className="main-body h-[90vh]">
         <Spline
           className="w-10 h-10"
-          scene="https://prod.spline.design/AGb0M6lqU2o7jHeK/scene.splinecode"
+          scene="https://prod.spline.design/VaXnwaqqTtMWsm67/scene.splinecode"
         />
       </div>
 
