@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Modal from "./components/Modal";
 import { useState } from "react";
+import MenuBar from "./components/MenuBar";
 
 const Index = () => {
   const navItems = [
@@ -54,6 +55,7 @@ const Index = () => {
 
   return (
     <section className="bg-[#E0E0E3]">
+      <MenuBar />
       <div className="main-body h-[90vh]">
         <Spline
           className="w-10 h-10"
