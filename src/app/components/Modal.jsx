@@ -4,7 +4,7 @@ import { CiMaximize1 } from "react-icons/ci";
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 
-const Modal = ({ title, closeModal }) => {
+const Modal = ({ title, children, closeModal }) => {
   const [windowSize, setWindowSize] = useState("minimized");
 
   const maximizeWindow = () => {
@@ -19,19 +19,19 @@ const Modal = ({ title, closeModal }) => {
     {
       name: "minimize",
       icon: <FiMinus />,
-      bgColor: "bg-[#28CA41]",
+      bgColor: "bg-[#FFBD44]",
       action: minimizeWindow,
     },
     {
       name: "maximize",
       icon: <CiMaximize1 />,
-      bgColor: "bg-[#FFBD2E]",
+      bgColor: "bg-[#28C941]",
       action: maximizeWindow,
     },
     {
       name: "close",
       icon: <RxCross2 />,
-      bgColor: "bg-[#FF6059]",
+      bgColor: "bg-[#FF605C]",
       action: closeModal,
     },
   ];
@@ -45,7 +45,7 @@ const Modal = ({ title, closeModal }) => {
 
   return (
     <div
-      className="w-screen h-screen fixed top-0 left-0 flex justify-center items-center"
+      className="w-screen h-[80vh] fixed top-[5vh] left-0 px-[10%] flex justify-center items-center"
       ref={constraintsRef}
     >
       <motion.div
@@ -60,14 +60,13 @@ const Modal = ({ title, closeModal }) => {
             duration: 0.3,
           },
         }}
-        className={`bg-[#ECECEC] border-2 border-gray-200 ${
+        className={`bg-[#ECECEC] border-2 border-gray-200 overflow-hidden ${
           windowSize === "minimized" ? "w-[400px] h-96" : "w-[75%] h-[75%]"
         }`}
       >
         {/* Control Bar */}
-        <div className="border-b-[0.5px] shadow-inner border-gray-600 h-10 bg-[#E8E7E8] w-full flex items-center px-2">
-          <div className="w-full h-full cursor-move"></div>
-          <div className="flex h-full items-center gap-1 ml-auto">
+        <div className="relative border-b-[0.5px] border-gray-400 h-10 bg-[#F7F7F7] w-full flex items-center px-2 top-0 left-0">
+          <div className="absolute top-0 left-[8px] flex h-full items-center gap-1">
             {modalControlButtons.map((button, index) => (
               <button
                 key={index}
@@ -81,11 +80,12 @@ const Modal = ({ title, closeModal }) => {
               </button>
             ))}
           </div>
+          <div className="w-full h-full cursor-move flex justify-center items-center text-[#525252] font-sans">
+            {title}
+          </div>
         </div>
         {/* Main Content */}
-        <div className="h-full">
-          <h2>This is modal inner child</h2>
-        </div>
+        <div className="h-full overflow-y-auto bg-[#F4F4F4]">{children}</div>
       </motion.div>
     </div>
   );

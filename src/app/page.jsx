@@ -12,6 +12,8 @@ import Image from "next/image";
 import Modal from "./components/Modal";
 import { useState } from "react";
 import MenuBar from "./components/MenuBar";
+import Skills from "./pages/Skills";
+import Projects from "./pages/Projects";
 
 const Index = () => {
   const navItems = [
@@ -44,13 +46,25 @@ const Index = () => {
   const [modal, setModal] = useState(false);
   const [selectedNavItem, setSelectedNavItem] = useState(null);
 
-  const triggerModal = (index) => {
-    setSelectedNavItem(index);
+  const triggerModal = (navItem) => {
+    setSelectedNavItem(navItem);
     setModal(true);
   };
 
   const closeModal = () => {
     setModal(false);
+    setSelectedNavItem(null);
+  };
+
+  const renderModalContent = () => {
+    switch (selectedNavItem?.name) {
+      case "Projects":
+        return <Projects />;
+      case "Skills":
+        return <Skills />;
+      default:
+        return null;
+    }
   };
 
   return (
@@ -68,9 +82,9 @@ const Index = () => {
           {navItems.map((navItem, index) => (
             <motion.div
               key={index}
-              initial={{ y: 125 }}
+              initial={{ scale: 0 }}
               whileInView={{
-                y: 0,
+                scale: 1,
                 transition: {
                   type: "spring",
                   stiffness: 150,
@@ -80,11 +94,12 @@ const Index = () => {
               }}
               whileHover={{
                 scale: 1.2,
-                color: "#ffffff",
                 transition: { type: "spring", stiffness: 400, duration: 200 },
               }}
-              className="navItem cursor-pointer"
-              onClick={() => triggerModal(index)}
+              className={`cursor-pointer relative py-1 px-2 group ${
+                selectedNavItem?.name === navItem.name ? "activeNavItem" : ""
+              }`}
+              onClick={() => triggerModal(navItem)}
             >
               <Image
                 src={navItem.iconPath}
@@ -94,14 +109,20 @@ const Index = () => {
                 quality={100}
                 placeholder="blur"
               />
-              <p className="text-center text-xl">{navItem.name}</p>
+              <p className="absolute top-[-30px] left-0 hidden w-full justify-center items-center text-xl group-hover:text-gray-700 group-hover:flex">
+                {navItem.name}
+              </p>
             </motion.div>
           ))}
         </div>
         <div className="taskbar-base h-full"></div>
       </div>
 
-      {modal && <Modal closeModal={closeModal} />}
+      {modal && (
+        <Modal title={selectedNavItem?.name} closeModal={closeModal}>
+          {renderModalContent()}
+        </Modal>
+      )}
     </section>
   );
 };
