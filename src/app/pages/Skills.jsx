@@ -29,7 +29,7 @@ const Skills = () => {
       <h1>This is the Skills Page</h1>
       <div className="cards-container">
         {mySkills.map((skill, index) => (
-          <div className="card">
+          <div className="card" key={index}>
             <div className="card-header">
               <span>{skill.name}</span>
               <span className="card-hp">HP {skill.hp}</span>
