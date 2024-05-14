@@ -60,13 +60,13 @@ const Modal = ({ title, children, closeModal }) => {
             duration: 0.3,
           },
         }}
-        className={`bg-[#ECECEC] border-2 border-gray-200 overflow-hidden ${
-          windowSize === "minimized" ? "w-[400px] h-96" : "w-[75%] h-[75%]"
+        className={`bg-[#ECECEC] border-2 border-gray-200 overflow-hidden rounded-md shadow-md ${
+          windowSize === "minimized" ? "w-[500px] h-[500px]" : "w-[80%] h-[80%]"
         }`}
       >
         {/* Control Bar */}
         <div className="relative border-b-[0.5px] border-gray-400 h-10 bg-[#F7F7F7] w-full flex items-center px-2 top-0 left-0">
-          <div className="absolute top-0 left-[8px] flex h-full items-center gap-1">
+          <div className="absolute top-0 left-[8px] flex h-full items-center gap-1 group">
             {modalControlButtons.map((button, index) => (
               <button
                 key={index}
@@ -74,7 +74,7 @@ const Modal = ({ title, children, closeModal }) => {
                 className={`w-4 h-4 group p-2 rounded-full shadow flex justify-center items-center ${button.bgColor}`}
                 onClick={button.action}
               >
-                <span className="text-gray-900 text-xs hidden transition-all ease-in-out duration-300 group-hover:block">
+                <span className="text-gray-700 text-xs hidden transition-all ease-in-out duration-300 group-hover:block">
                   {button.icon}
                 </span>
               </button>
@@ -85,7 +85,9 @@ const Modal = ({ title, children, closeModal }) => {
           </div>
         </div>
         {/* Main Content */}
-        <div className="h-full overflow-y-auto bg-[#F4F4F4]">{children}</div>
+        <div className="h-full overflow-y-auto bg-[#F4F4F4] pb-16">
+          {children}
+        </div>
       </motion.div>
     </div>
   );

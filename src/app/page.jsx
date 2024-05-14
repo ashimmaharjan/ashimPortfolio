@@ -7,6 +7,7 @@ import FolderIcon from "../../public/images/fav-folder-dynamic-color.png";
 import ConatctIcon from "../../public/images/at-dynamic-color.png";
 import HobbiesIcon from "../../public/images/paint-kit-dynamic-color.png";
 import SkillsIcon from "../../public/images/magic-trick-dynamic-premium.png";
+
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Modal from "./components/Modal";
@@ -82,9 +83,9 @@ const Index = () => {
           {navItems.map((navItem, index) => (
             <motion.div
               key={index}
-              initial={{ scale: 0 }}
+              initial={{ opacity: 0 }}
               whileInView={{
-                scale: 1,
+                opacity: 1,
                 transition: {
                   type: "spring",
                   stiffness: 150,
@@ -94,7 +95,7 @@ const Index = () => {
               }}
               whileHover={{
                 scale: 1.2,
-                transition: { type: "spring", stiffness: 400, duration: 200 },
+                transition: { type: "spring", stiffness: 400 },
               }}
               className={`cursor-pointer relative py-1 px-2 group ${
                 selectedNavItem?.name === navItem.name ? "activeNavItem" : ""
@@ -109,7 +110,7 @@ const Index = () => {
                 quality={100}
                 placeholder="blur"
               />
-              <p className="absolute top-[-30px] left-0 hidden w-full justify-center items-center text-xl group-hover:text-gray-700 group-hover:flex">
+              <p className="absolute top-[-22px] left-0 hidden w-full justify-center items-center text-sm font-bold group-hover:text-gray-500 group-hover:flex">
                 {navItem.name}
               </p>
             </motion.div>
