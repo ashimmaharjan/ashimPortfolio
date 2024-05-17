@@ -17,8 +17,15 @@ import HTMLIcon from "../../../public/images/html.png";
 import CSSIcon from "../../../public/images/css.png";
 import LaravelIcon from "../../../public/images/laravel-framework-logo.png";
 import PHPIcon from "../../../public/images/php.png";
+import TerraformIcon from "../../../public/images/terraform.png";
 
-import "./Skills.css";
+import MetalTypeIcon from "../../../public/images/metal-type.png";
+import FairyTypeIcon from "../../../public/images/fairy-type.png";
+import PsychicTypeIcon from "../../../public/images/psychic-type.png";
+import WaterTypeIcon from "../../../public/images/water-type.png";
+import FireTypeIcon from "../../../public/images/fire-type.png";
+import ColorlessIcon from "../../../public/images/colorless.png";
+
 import Image from "next/image";
 
 import { motion } from "framer-motion";
@@ -27,12 +34,9 @@ const Skills = () => {
   const mySkills = [
     {
       name: "HTML",
-      type: "HTML",
-      pokemonType: "Rock",
+      pokemonType: "Metal",
       hp: 100,
       weakness: "CSS",
-      retreat: "None",
-      footerText: "HTML Type",
       imagePath: HTMLIcon,
       color: "#e34c26",
       attack: {
@@ -44,12 +48,9 @@ const Skills = () => {
     },
     {
       name: "CSS",
-      type: "CSS",
       pokemonType: "Fairy",
       hp: 100,
       weakness: "JavaScript",
-      retreat: "None",
-      footerText: "CSS Type",
       imagePath: CSSIcon,
       color: "#264de4",
       attack: {
@@ -61,12 +62,9 @@ const Skills = () => {
     },
     {
       name: "Tailwind",
-      type: "Tailwind",
-      pokemonType: "Flying",
+      pokemonType: "Fairy",
       hp: 120,
       weakness: "Vanilla CSS",
-      retreat: "None",
-      footerText: "Tailwind Type",
       imagePath: TailwindIcon,
       color: "#38b2ac",
       attack: {
@@ -78,12 +76,9 @@ const Skills = () => {
     },
     {
       name: "React",
-      type: "React",
       pokemonType: "Psychic",
       hp: 150,
       weakness: "Angular",
-      retreat: "None",
-      footerText: "React Type",
       imagePath: ReactIcon,
       color: "#61dafb",
       attack: {
@@ -95,12 +90,9 @@ const Skills = () => {
     },
     {
       name: "Vue",
-      type: "Vue",
-      pokemonType: "Electric",
+      pokemonType: "Psychic",
       hp: 150,
       weakness: "React",
-      retreat: "None",
-      footerText: "Vue Type",
       imagePath: VueIcon,
       color: "#42b883",
       attack: {
@@ -111,12 +103,9 @@ const Skills = () => {
     },
     {
       name: "Angular",
-      type: "Angular",
-      pokemonType: "Steel",
+      pokemonType: "Psychic",
       hp: 150,
       weakness: "Vue",
-      retreat: "None",
-      footerText: "Angular Type",
       imagePath: AngularIcon,
       color: "#dd1b16",
       attack: {
@@ -127,13 +116,10 @@ const Skills = () => {
       },
     },
     {
-      name: "Responsive Designs",
-      type: "CSS",
+      name: "RWD",
       pokemonType: "Water",
       hp: 100,
       weakness: "Old Browsers",
-      retreat: "None",
-      footerText: "CSS Type",
       imagePath: CSSIcon,
       color: "#264de4",
       attack: {
@@ -145,12 +131,9 @@ const Skills = () => {
     },
     {
       name: "Node.js",
-      type: "Node.js",
-      pokemonType: "Grass",
+      pokemonType: "Fire",
       hp: 130,
       weakness: "Blocking I/O",
-      retreat: "None",
-      footerText: "Node.js Type",
       imagePath: NodeJSIcon,
       color: "#68a063",
       attack: {
@@ -162,12 +145,9 @@ const Skills = () => {
     },
     {
       name: "PHP",
-      type: "PHP",
-      pokemonType: "Poison",
+      pokemonType: "Fire",
       hp: 120,
       weakness: "Security",
-      retreat: "None",
-      footerText: "PHP Type",
       imagePath: PHPIcon,
       color: "#777bb4",
       attack: {
@@ -179,12 +159,9 @@ const Skills = () => {
     },
     {
       name: "Laravel",
-      type: "Laravel",
-      pokemonType: "Ground",
+      pokemonType: "Fire",
       hp: 140,
       weakness: "Complexity",
-      retreat: "None",
-      footerText: "Laravel Type",
       imagePath: LaravelIcon,
       color: "#ff2d20",
       attack: {
@@ -196,13 +173,10 @@ const Skills = () => {
     },
     {
       name: "Terraform",
-      type: "Terraform",
-      pokemonType: "Fire",
+      pokemonType: "Metal",
       hp: 140,
       weakness: "Complex Syntax",
-      retreat: "None",
-      footerText: "Terraform Type",
-      icon: <SiTerraform />,
+      imagePath: TerraformIcon,
       color: "#5c4ee5",
       attack: {
         name: "Inferno Blaze",
@@ -212,6 +186,22 @@ const Skills = () => {
       },
     },
   ];
+
+  const typeIcons = {
+    Metal: MetalTypeIcon,
+    Fairy: FairyTypeIcon,
+    Psychic: PsychicTypeIcon,
+    Water: WaterTypeIcon,
+    Fire: FireTypeIcon,
+  };
+
+  const typeBackgrounds = {
+    Water: "/images/water-type-bg.jpg",
+    Metal: "/images/metal-type-bg.jpg",
+    Fairy: "/images/fairy-type-bg.jpg",
+    Psychic: "/images/psychic-type-bg.png",
+    Fire: "/images/fire-type-bg.jpg",
+  };
 
   return (
     <section className="skills-container py-3">
@@ -227,14 +217,10 @@ const Skills = () => {
         </p>
       </div>
 
-      <div className="cards-container mt-5">
+      <div className="mt-5 flex flex-wrap justify-center gap-8">
         {mySkills.map((skill, index) => (
           <motion.div
-            className="card"
             key={index}
-            style={{
-              backgroundImage: `linear-gradient(to top right, ${skill.color} 0%, #ffffff 100%)`,
-            }}
             initial={{ scale: 0 }}
             whileInView={{
               scale: 1,
@@ -245,31 +231,98 @@ const Skills = () => {
                 duration: 100,
               },
             }}
+            whileHover={{
+              y: -8,
+              x: 5,
+              transition: {
+                type: "spring",
+                stiffness: 280,
+              },
+            }}
+            className="w-[80mm] h-[108mm] p-3 bg-[#FFE165] border-none rounded-[20px] shadow cursor-pointer"
           >
-            <div className="card-header">
-              <span>{skill.name}</span>
-              <span className="card-hp">HP {skill.hp}</span>
-            </div>
-            {skill.icon ? (
-              <div className="card-image">{skill.icon}</div>
-            ) : (
-              <div className="card-image">
+            {/* Main Card */}
+            <div
+              className="p-1.5 flex flex-col border w-full border-gray-800 h-full rounded-lg"
+              style={{
+                backgroundImage: `url(${typeBackgrounds[skill.pokemonType]})`,
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+              }}
+            >
+              {/* Header */}
+              <div className="flex w-full h-10">
+                {/* Pill */}
+                <div className="rounded-xl h-5 -ml-3 flex items-center text-center -skew-x-[10deg] px-2 bg-gradient-to-br from-gray-300 to-gray-50 border-gray-400 shadow-inner text-[#595757] text-[11px] border font-bold">
+                  <span>BASIC</span>
+                </div>
+                <h2 className="text-2xl font-bold ml-1 -mt-0.5 pokemon-card-font">
+                  {skill.name}
+                </h2>
+                {/* HP and type section */}
+                <div className="flex ml-auto font-sans font-bold text-black gap-x-0.5">
+                  <span className="text-[10px] mt-[13px] pokemon-card-font">
+                    HP
+                  </span>
+                  <h2 className="text-2xl pokemon-card-font">{skill.hp}</h2>
+
+                  <div className="rounded-full h-[28px] overflow-hidden bg-yellow-400 border-2 border-gray-50">
+                    <Image
+                      className="object-fill"
+                      src={typeIcons[skill.pokemonType]}
+                      alt={skill.pokemonType}
+                      width={25}
+                      height={25}
+                      quality={100}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Skill Image Holder */}
+              <div className="w-[95%] mx-auto -mt-1 h-40 flex justify-center items-center bg-white border-[3px] border-gray-300">
                 <Image
                   src={skill.imagePath}
                   alt={skill.name}
+                  width={120}
+                  height={120}
                   quality={100}
-                  placeholder="blur"
-                  width={80}
-                  height={80}
                 />
               </div>
-            )}
 
-            <div className="card-details">
-              <span>Weakness: {skill.weakness}</span>
-              <span>Retreat: {skill.retreat}</span>
+              {/* Attact Information */}
+              <div className="mt-5 px-2">
+                <div className="flex justify-between items-center">
+                  <Image
+                    src={ColorlessIcon}
+                    width={30}
+                    height={30}
+                    alt="colorlessIcon"
+                    quality={30}
+                  />
+
+                  <h3 className="pokemon-card-font font-bold text-lg">
+                    {skill.attack.name}
+                  </h3>
+
+                  <h3 className="pokemon-card-font font-bold text-lg">
+                    {skill.attack.damage}
+                  </h3>
+                </div>
+
+                <p className="pokemon-card-font mt-2 text-xs tracking-tighter leading-none text-justify">
+                  {skill.attack.description}
+                </p>
+              </div>
+
+              {/* Weakness */}
+              <div className="mt-10 w-[65%] text-gray-700 h-auto px-5 shadow-inner ml-4 py-1 bg-gradient-to-tr from-gray-300 to-gray-50 border border-gray-400 rounded-2xl rounded-tl-none rounded-br-none">
+                <p className="pokemon-card-font text-[10px]">
+                  weakness : <b>{skill.weakness}</b>
+                </p>
+              </div>
             </div>
-            <div className="card-footer">{skill.footerText}</div>
           </motion.div>
         ))}
       </div>

@@ -5,7 +5,7 @@ import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 
 const Modal = ({ title, children, closeModal }) => {
-  const [windowSize, setWindowSize] = useState("minimized");
+  const [windowSize, setWindowSize] = useState("maximized");
 
   const maximizeWindow = () => {
     setWindowSize("maximized");
@@ -39,8 +39,8 @@ const Modal = ({ title, children, closeModal }) => {
   const constraintsRef = useRef(null);
 
   const scale = {
-    minimized: 1,
-    maximized: 1.2,
+    minimized: 0.9,
+    maximized: 1,
   };
 
   return (
@@ -61,7 +61,7 @@ const Modal = ({ title, children, closeModal }) => {
           },
         }}
         className={`bg-[#ECECEC] border-2 border-gray-200 overflow-hidden rounded-md shadow-md ${
-          windowSize === "minimized" ? "w-[500px] h-[500px]" : "w-[80%] h-[80%]"
+          windowSize === "minimized" ? "w-[500px] h-[500px]" : "w-[95%] h-[95%]"
         }`}
       >
         {/* Control Bar */}
